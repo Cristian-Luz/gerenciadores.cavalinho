@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Rotas Google Maps</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/356/356031.png?w=826&t=st=1687944388~exp=1687944988~hmac=dadcfa95d6e28390c33b62eecc9c8aabfd4faa61c25c28e5e5bbb4bca64b1575" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+    </style>
+</head>
+<body>
+
+    <div>
+        <button class="help-button">Ajuda</button>
+        <button onclick="abrirArquivo()">Criar Rota</button>
+        <button>Limpar Tabela</button> 
+        <button id="exportButton">Exportar Tabela</button> 
+        <input type="file" id="importInput">
+    </div>
+
+    <div class="popup">
+        <p class="textAjuda" style="font-size: 25px; text-align: center;">PRINCIPAIS FUNCIONALIDADES</p>
+        <p class="textAjuda">Cadastro de Rotas</p>
+            
+            1 - Adicione novas rotas ao sistema, inserindo informações como coleta, entrega, destino e o link da rota do Google Maps.<br>
+            2 - Garanta a precisão dos dados fornecidos para facilitar a busca e organização das rotas.<br>
+            
+        <p class="textAjuda">Busca de Rotas</p> 
+            
+            1 - Realize buscas personalizadas com base em critérios coleta, entrega, destino.<br>
+            2 - Ordene os resultados por ordem alfabetica clicando na primeira linha da tabela.<br>
+            3 - Realize buscas personalizadas, utilizando o sinal "+" para concatenar os critérios de pesquisa de coleta, entrega e destino.<br>
+            4 - Por exemplo, ao buscar "Spal São Paulo + Spal Rio de Janeiro", o sistema apresentará rotas que partem de São Paulo e chegam ao Rio de Janeiro.<br>
+            
+        <p class="textAjuda">Visualização de Detalhes</p>   
+            
+            1 - Acesse informações completas sobre as rotas encontradas.<br>
+            2 - Verifique duração estimada da viagem e outros detalhes importantes.<br>
+            
+        <p class="textAjuda">Exclusão de Rotas</p>   
+            
+            1 - Exclua rotas que não sejam mais necessárias de forma simples e rápida<br><br>
+           
+        <p style="text-align: center"><button onclick="closePopup()" class="button-amarelo">Fechar</button></p>
+
+    </div>
+
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 18px; margin-bottom: 18px;">
+        <div>
+            <img id="img" src="https://cdn-icons-png.flaticon.com/512/356/356031.png?w=826&t=st=1687945924~exp=1687946524~hmac=379b6ddf82077ed97f142f80df5ab6025c96b2a1238eddddf8595609a9773d9e" style="width: 50px;">
+        </div>
+        <div>
+            <h1 id="titulo">Gerenciador de Rotas do Google Maps</h1>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="content-left">    
+            <h2 class="title">Pesquisar Rotas</h2>
+            <form id="searchForm">
+                <label for="searchBusca"></label>
+                <input type="text" id="searchBusca" name="searchBusca" placeholder="Digite a sua rota: Cavalinho Vacaria + Cavalinho Paulinia">
+                <br>
+                <button id="pesquisar" type="submit">Pesquisar</button>
+            </form>
+            <div id="results">
+                <h2 class="title">Lista de rotas cadastradas</h2>
+                <div style="max-height: 400px; overflow-y: auto;">
+                    <table id="routesTable">
+                        <thead>
+                            <tr id="linhaTopo">
+                                <th>Coleta</th>
+                                <th>Entrega</th>
+                                <th>Destino</th>
+                                <th id="botõesInternos">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="routesTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-right">
+            <h2 class="title">Cadastro de Rotas</h2>
+            <form id="addRouteForm">
+                <label for="coleta">Coleta:</label>
+                <input type="text" id="coleta" name="coleta">
+                <br>
+                <label for="entrega">Entrega:</label>
+                <input type="text" id="entrega" name="entrega">
+                <br>
+                <label for="destino">Destino:</label>
+                <input type="text" id="destino" name="destino">
+                <br>
+                <label for="link">Link:</label>
+                <input type="text" id="link" name="link">
+                <br>
+                <button type="submit">Adicionar Rota</button>
+            </form>
+        </div>
+
+    </div>
+    
+    <script src="script.js"></script>
+
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
+    <script>
+         function abrirArquivo() {
+            window.location.href = './Criador_de_Rotas.html';
+        }
+    </script>
+
+</body>
+</html>

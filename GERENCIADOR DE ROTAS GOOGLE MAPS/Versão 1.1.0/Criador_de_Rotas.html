@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <title>Criar Rota do Google Maps</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/356/356031.png?w=826&t=st=1687944388~exp=1687944988~hmac=dadcfa95d6e28390c33b62eecc9c8aabfd4faa61c25c28e5e5bbb4bca64b1575" type="image/x-icon">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 16%;
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .input-container {
+      margin-bottom: 10px;
+    }
+
+    .link-container {
+      margin-top: 20px;
+    }
+
+    .link-container a {
+      display: block;
+      margin: 10px auto;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    #orientacoes{
+      height: 35px;
+      width: 1000px;
+      font-size: 20px;
+      margin-top: 35px;
+      margin-bottom: 35px;
+      border-radius: 15px;
+      padding-left: 20px;
+    }
+    .title{
+      font-size: 35px;
+      text-transform: uppercase;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .buttonCriar{
+      padding: 8px 15px 8px 15px;
+      margin-right: 7px;
+      padding: 10px 30px 10px 30px;
+      background-color: rgb(193, 251, 255);
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      border-radius: 10px;
+    }
+
+  </style> 
+  <script>
+    function gerarLinkRota() {
+      const orientacoes = document.getElementById("orientacoes").value;
+      const cidades = orientacoes.split(",").map(cidade => cidade.trim());
+      const linkRota = "https://www.google.com/maps/dir/" + cidades.join("/") + "/";
+      document.getElementById("link-rota").innerHTML = '<a href="' + linkRota + '" target="_blank">' + linkRota + '</a>';
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="input-container">
+      <label class="title" for="orientacoes">DIGITE AS ORIENTAÇÕES</label>
+      <br>
+      <input type="text" id="orientacoes" placeholder="Cavalinho Vacaria, Cavalinho Paulinia, Spal Itabirito">
+    </div>
+    <button class="buttonCriar" onclick="gerarLinkRota()">Criar Rota</button>
+    <div class="link-container" id="link-rota"></div>
+  </div>
+</body>
+</html>
